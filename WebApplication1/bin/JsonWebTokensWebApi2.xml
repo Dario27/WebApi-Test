@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApplication1</name>
+    </assembly>
+    <members>
+        <member name="T:WebApplication1.Controllers.TareasController">
+            <summary>
+            Controlador de Tareas
+            </summary>
+            <remarks>
+            Controller que contiene todos los metodos del WebApi
+            </remarks>
+        </member>
+        <member name="M:WebApplication1.Controllers.TareasController.Get">
+            <summary>
+            Devuelve una lista de las tareas de todos los usuarios
+            </summary>
+            <remarks>
+            Se enlista todas las tareas si ningun tipo de condicion
+            </remarks>
+            <response code="200">True. Devuelve el objeto solicitado.</response>
+        </member>
+        <member name="M:WebApplication1.Controllers.TareasController.Get(System.Int32)">
+            <summary>
+            Devuelve la info de una sola tarea especifica
+            </summary>
+            <remarks>
+            Devuelve la info de una tarea especifica, recibe como parametro el Id de la tarea
+            </remarks> 
+            <param name="id">Id (GUID) del objeto.</param>
+            <response code="200">True. Devuelve el objeto solicitado.</response>
+        </member>
+        <member name="M:WebApplication1.Controllers.TareasController.Post(WebApplication1.Models.Tareas)">
+            <summary>
+            Crea una nueva tarea.
+            </summary>
+            <remarks>
+            Crea una nueva tarea, enviandole como parametro el objecto json 
+            </remarks>
+            <param name="oTareas">Objeto que envia los datos y los graba a la BD.</param>
+            <response code="200">TRUE. Devuelve el objeto solicitado.</response>
+        </member>
+        <member name="M:WebApplication1.Controllers.TareasController.Put(WebApplication1.Models.Tareas)">
+            <summary>
+            Modifica una tarea especifica.
+            </summary>
+            <remarks>
+            Modifica una tarea especifica, enviandole como parametro el objecto json con los campos IDTarea y AutorTarea 
+            </remarks>
+            <param name="oTareas">Objeto que envia los datos y modifica la info a la BD.</param>
+            <response code="200">TRUE. Devuelve el objeto solicitado.</response>
+        </member>
+        <member name="M:WebApplication1.Controllers.TareasController.Delete(WebApplication1.Models.Tareas)">
+            <summary>
+            Elimina una tarea especifica.
+            </summary>
+            <remarks>
+            Elimina una tarea especifica, enviandole como parametro el objecto json con los campos IDTarea y AutorTarea 
+            </remarks>
+            <param name="oTareas">Objeto que envia para eliminar el registro a la BD.</param>
+            <response code="200">TRUE. Devuelve el objeto solicitado.</response>
+        </member>
+        <member name="T:WebApplication1.Properties.Resources">
+            <summary>
+              Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
+            </summary>
+        </member>
+        <member name="P:WebApplication1.Properties.Resources.ResourceManager">
+            <summary>
+              Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+            </summary>
+        </member>
+        <member name="P:WebApplication1.Properties.Resources.Culture">
+            <summary>
+              Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
+              búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
+            </summary>
+        </member>
+    </members>
+</doc>
