@@ -11,10 +11,10 @@ namespace WebApplication1.DATA
 {
     public class TareasData
     {      
-        public static string rutaConnexionSQL = ConfigurationManager.ConnectionStrings["WebApplication1.Properties.Settings.SqlServer"].ConnectionString;
+        
         public static bool Registrar(Tareas objTareas)
         {
-            using (SqlConnection oConexion = new SqlConnection(rutaConnexionSQL))
+            using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConnexionSQL))
             {
                 SqlCommand cmd = new SqlCommand("tsp_registrar", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -39,7 +39,7 @@ namespace WebApplication1.DATA
 
         public static bool Modificar(Tareas objTareas)
         {
-            using (SqlConnection oConexion = new SqlConnection(rutaConnexionSQL))
+            using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConnexionSQL))
             {
                 SqlCommand cmd = new SqlCommand("tsp_modificar", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -66,7 +66,7 @@ namespace WebApplication1.DATA
         public static List<Tareas> Listar()
         {
             List<Tareas> oListaTareas = new List<Tareas>();
-            using (SqlConnection oConexion = new SqlConnection(rutaConnexionSQL))
+            using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConnexionSQL))
             {
                 SqlCommand cmd = new SqlCommand("tsp_listar", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -108,7 +108,7 @@ namespace WebApplication1.DATA
         public static Tareas ObtenerById(int idTarea)
         {
             Tareas oTareas = new Tareas();            
-            using (SqlConnection oConexion = new SqlConnection(rutaConnexionSQL))
+            using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConnexionSQL))
             {
                 SqlCommand cmd = new SqlCommand("tsp_obtenerByID", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -151,7 +151,7 @@ namespace WebApplication1.DATA
         public static List<Tareas> ObtenerByFilter()
         {
             List<Tareas> oListaFchVence = new List<Tareas>();
-            using (SqlConnection oConexion = new SqlConnection(rutaConnexionSQL))
+            using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConnexionSQL))
             {
                 SqlCommand cmd = new SqlCommand("tsp_obtenerByFchVence", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -190,7 +190,7 @@ namespace WebApplication1.DATA
 
         public static bool Eliminar(Tareas oTareas)
         {
-            using (SqlConnection oConexion = new SqlConnection(rutaConnexionSQL))
+            using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConnexionSQL))
             {
                 SqlCommand cmd = new SqlCommand("tsp_eliminar", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
