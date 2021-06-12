@@ -265,10 +265,10 @@ H:\GitHub\WebApi-Test\WebApplication1\bin\Microsoft.CodeDom.Providers.DotNetComp
 H:\GitHub\WebApi-Test\WebApplication1\bin\es\System.Net.Http.Formatting.resources.dll
 H:\GitHub\WebApi-Test\WebApplication1\bin\es\System.Web.Http.resources.dll
 H:\GitHub\WebApi-Test\WebApplication1\bin\es\System.Web.Http.WebHost.resources.dll
-H:\GitHub\WebApi-Test\WebApplication1\obj\Debug\WebApplication1.csprojAssemblyReference.cache
 H:\GitHub\WebApi-Test\WebApplication1\obj\Debug\WebApplication1.Properties.Resources.resources
 H:\GitHub\WebApi-Test\WebApplication1\obj\Debug\WebApplication1.csproj.GenerateResource.cache
 H:\GitHub\WebApi-Test\WebApplication1\obj\Debug\WebApplication1.csproj.CoreCompileInputs.cache
 H:\GitHub\WebApi-Test\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
 H:\GitHub\WebApi-Test\WebApplication1\obj\Debug\WebApplication1.dll
 H:\GitHub\WebApi-Test\WebApplication1\obj\Debug\WebApplication1.pdb
+H:\GitHub\WebApi-Test\WebApplication1\obj\Debug\WebApplication1.csproj.AssemblyReference.cache

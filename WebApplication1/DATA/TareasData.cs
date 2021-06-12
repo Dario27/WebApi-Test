@@ -148,13 +148,65 @@ namespace WebApplication1.DATA
             }
         }
 
-        public static List<Tareas> ObtenerByFilter()
+        public static List<Tareas> ObtenerByFilter(Tareas objTareas)
         {
-            List<Tareas> oListaFchVence = new List<Tareas>();
+            string autor, Estado, fchVence;
+            autor = objTareas.AutorTarea;
+            Estado = objTareas.EstTarea;
+            
+            if (objTareas.FechaVence.ToString().Equals("01/01/0001 0:00:00"))
+            {
+                fchVence = "";
+            }
+            else
+            {
+                fchVence = objTareas.FechaVence.ToString();
+            }
+            
+
+            List<Tareas> oTareasFilter = new List<Tareas>();
+            //Tareas oTareasFilter = new Tareas();
+            string Query = "";
+            
+            //Filtrado multiples
+            if (autor != "" && Estado != "" && fchVence != "") {
+                Query = "select * from Tareas as t " +
+                        "where(t.AutorTarea like '%"+autor+ "%')" +
+                        "AND(t.EstTarea LIKE '%"+ Estado + "%')" +
+                        "AND(t.FechaVence = '"+fchVence+ "')";
+            } else if(autor != "" && Estado != "" && fchVence == "") {
+                Query = "select * from Tareas as t " +
+                        "where(t.AutorTarea like '%" + autor + "%')" +
+                        "AND(t.EstTarea LIKE '%" + Estado + "%')";
+            } else if (autor != "" && Estado == "" && fchVence != "") {
+                Query = "select * from Tareas as t " +
+                        "where(t.AutorTarea like '%" + autor + "%')" +
+                        "AND(t.FechaVence = '" + fchVence + "')";
+            }
+            else if (autor == "" && Estado == "" && fchVence != "")
+            {
+                Query = "select * from Tareas as t " +
+                        "where(t.FechaVence = '" + fchVence + "')";
+            }
+            else if (autor == "" && Estado != "" && fchVence != "")
+            {
+                Query = "select * from Tareas as t " +
+                        "where(t.FechaVence = '" + fchVence + "')"+
+                        "AND(t.EstTarea LIKE '%" + Estado + "%')";
+            }
+            else if (autor != "" && Estado == "" && fchVence == "")
+            {
+                Query = "select * from Tareas as t " +
+                        "where(t.AutorTarea like '%" + autor + "%')";
+            }else
+            {
+                Query = "select * from Tareas as t ";
+            }
+
             using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConnexionSQL))
             {
-                SqlCommand cmd = new SqlCommand("tsp_obtenerByFchVence", oConexion);
-                cmd.CommandType = CommandType.StoredProcedure;
+                SqlCommand cmd = new SqlCommand(Query, oConexion);
+                cmd.CommandType = CommandType.Text;
 
                 try
                 {
@@ -166,7 +218,7 @@ namespace WebApplication1.DATA
 
                         while (dr.Read())
                         {
-                            oListaFchVence.Add(new Tareas()
+                            oTareasFilter.Add(new Tareas()
                             {
                                 IdTarea = Convert.ToInt32(dr["IdTarea"]),
                                 Descripcion = dr["Descripcion"].ToString(),
@@ -175,15 +227,24 @@ namespace WebApplication1.DATA
                                 FechaCreacion = Convert.ToDateTime(dr["FechaCreacion"].ToString()),
                                 FechaVence = Convert.ToDateTime(dr["FechaVence"].ToString())
                             });
+                            /*oTareasFilter = new Tareas()
+                            {
+                                IdTarea = Convert.ToInt32(dr["IdTarea"]),
+                                Descripcion = dr["Descripcion"].ToString(),
+                                EstTarea = dr["EstTarea"].ToString(),
+                                AutorTarea = dr["AutorTarea"].ToString(),
+                                FechaCreacion = Convert.ToDateTime(dr["FechaCreacion"].ToString()),
+                                FechaVence = Convert.ToDateTime(dr["FechaVence"].ToString())
+                            };*/
                         }
 
                     }
 
-                    return oListaFchVence;
+                    return oTareasFilter;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    return oListaFchVence;
+                    return oTareasFilter;
                 }
             }
         }

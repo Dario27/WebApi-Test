@@ -31,6 +31,16 @@
             <param name="id">Id (GUID) del objeto.</param>
             <response code="200">True. Devuelve el objeto solicitado.</response>
         </member>
+        <member name="M:WebApplication1.Controllers.TareasController.Filter(WebApplication1.Models.Tareas)">
+            <summary>
+            Devuelve la info de la tarea por filtros especificos
+            </summary>
+            <remarks>
+            Devuelve la info de una tarea especifica, recibe como parametro el Id de la tarea
+            </remarks> 
+            <param name="JsonTareas">Json que envia para realizar el filtrado a la BD. se debe enviar los siguientes datos {Estado, AutorTarea, fchVence}</param>
+            <response code="200">True. Devuelve el objeto solicitado.</response>
+        </member>
         <member name="M:WebApplication1.Controllers.TareasController.Post(WebApplication1.Models.Tareas)">
             <summary>
             Crea una nueva tarea.
@@ -58,7 +68,7 @@
             <remarks>
             Elimina una tarea especifica, enviandole como parametro el objecto json con los campos IDTarea y AutorTarea 
             </remarks>
-            <param name="oTareas">Objeto que envia para eliminar el registro a la BD.</param>
+            <param name="oTareas">Json que envia para eliminar el registro a la BD. se debe enviar los siguientes datos {idTarea,AutorTarea}</param>
             <response code="200">TRUE. Devuelve el objeto solicitado.</response>
         </member>
         <member name="T:WebApplication1.Properties.Resources">

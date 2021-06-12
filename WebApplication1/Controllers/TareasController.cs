@@ -44,6 +44,21 @@ namespace WebApplication1.Controllers
             return TareasData.ObtenerById(id);
         }
 
+        // GET api/<controller>/5
+        /// <summary>
+        /// Devuelve la info de la tarea por filtros especificos
+        /// </summary>
+        /// <remarks>
+        /// Devuelve la info de una tarea especifica, recibe como parametro el Id de la tarea
+        /// </remarks> 
+        /// <param name="JsonTareas">Json que envia para realizar el filtrado a la BD. se debe enviar los siguientes datos {Estado, AutorTarea, fchVence}</param>
+        /// <response code="200">True. Devuelve el objeto solicitado.</response>
+        public List<Tareas> Filter(Tareas JsonTareas)
+        {
+            var tareas = TareasData.ObtenerByFilter(JsonTareas);
+            return tareas;
+        }
+
         // POST api/<controller>/fechVence
         //public List<Tareas> ObtenerByFilter([FromBody] Tareas oTareas)
         //{
@@ -85,7 +100,7 @@ namespace WebApplication1.Controllers
         /// <remarks>
         /// Elimina una tarea especifica, enviandole como parametro el objecto json con los campos IDTarea y AutorTarea 
         /// </remarks>
-        /// <param name="oTareas">Objeto que envia para eliminar el registro a la BD.</param>
+        /// <param name="oTareas">Json que envia para eliminar el registro a la BD. se debe enviar los siguientes datos {idTarea,AutorTarea}</param>
         /// <response code="200">TRUE. Devuelve el objeto solicitado.</response>
         public bool Delete([FromBody] Tareas oTareas)
         {
