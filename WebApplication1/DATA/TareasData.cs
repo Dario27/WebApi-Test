@@ -18,6 +18,7 @@ namespace WebApplication1.DATA
             {
                 SqlCommand cmd = new SqlCommand("tsp_registrar", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@IdTarea", objTareas.IdTarea);
                 cmd.Parameters.AddWithValue("@Descripcion", objTareas.Descripcion);
                 cmd.Parameters.AddWithValue("@EstTarea", objTareas.EstTarea);
                 cmd.Parameters.AddWithValue("@Autor", objTareas.AutorTarea);
